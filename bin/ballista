@@ -21,7 +21,7 @@ Mercenary.program(:ballista) do |p|
     config_file = ARGV.shift
     puts p unless config_file
     config = parse_config(config_file)
-    months = options[:months] || 12
+    months = options[:months].to_i || 12
     projection = Ballista.new(entries: config).project(months)
     if options[:output]
       File.open(options[:output], 'w') { |fh| fh << projection.to_s }
