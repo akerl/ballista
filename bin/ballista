@@ -4,9 +4,30 @@ require 'ballista'
 require 'yaml'
 require 'mercenary'
 require 'cymbal'
+require 'date'
 
 def parse_config(file)
   Cymbal.symbolize(YAML.load(File.read(file)))
+end
+
+def count_months(months)
+  return unless months
+  start_dt = Date.today + 1
+  end_dt = start_dt >> months.to_i
+  [start_dt, end_dt]
+end
+
+def parse_start_end(start_dt, end_dt)
+  return unless start_dt || end_dt
+  raise('Must specify start and end together') unless start_dt && end_dt
+  [Date.parse(start_dt), Date.parse(end_dt)]
+end
+
+def parse_range(months, start_dt, end_dt)
+  if months && (start_dt || end_dt)
+    raise('Cannot specify months *and* start/end')
+  end
+  count_months(months) || parse_start_end(start_dt, end_dt) || count_months(12)
 end
 
 Mercenary.program(:ballista) do |p|
@@ -16,13 +37,17 @@ Mercenary.program(:ballista) do |p|
 
   p.option :output, '-o FILE', '--output FILE', 'Output file for ledger'
   p.option :months, '-m INT', '--months INT', 'How far ahead to project'
+  p.option :start, '-s DATE', '--start DATE', 'When to start the projection'
+  p.option :end, '-e DATE', '--end DATE', 'When to end the projection'
 
   p.action do |_, options|
     config_file = ARGV.shift
     puts p unless config_file
     config = parse_config(config_file)
-    months = options[:months].to_i || 12
-    projection = Ballista.new(entries: config).project(months)
+
+    start_dt, end_dt = parse_range(*options.values_at(:months, :start, :end))
+
+    projection = Ballista.new(entries: config).project(start_dt, end_dt)
     if options[:output]
       File.open(options[:output], 'w') { |fh| fh << projection.to_s }
     else

@@ -9,10 +9,8 @@ module Ballista
       @entries = params[:entries]
     end
 
-    def project(months)
-      start = Date.today + 1
-      finish = start >> months
-      entries = start.upto(finish).map { |date| parse_day(date) }
+    def project(start_dt, end_dt)
+      entries = start_dt.upto(end_dt).map { |date| parse_day(date) }
       Ledger.new(entries: entries.flatten)
     end
 
