@@ -14,12 +14,14 @@ Mercenary.program(:ballista) do |p|
   p.syntax 'ballista [options] CONFIG_FILE'
 
   p.option :output, '-o FILE', '--output FILE', 'Output file for ledger'
+  p.option :months, '-m INT', '--months INT', 'How far ahead to project'
 
   p.action do |_, options|
     config_file = ARGV.shift
     puts p unless config_file
     config = parse_config(config_file)
-    ledger = Ballista.new(config)
+    months = options[:months] || 12
+    ledger = Ballista.new(entries: config, months: months)
     if options[:output]
       File.open(options[:output], 'w') { |fh| fh << ledger.to_s }
     else
