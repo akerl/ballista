@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'ballista'
+require 'yaml'
+require 'mercenary'
+
+def parse_config(file)
+  YAML.load(File.read(file))
+end
+
+Mercenary.program(:ballista) do |p|
+  p.version Ballista::VERSION
+  p.description 'Tool for projecting future activity with Ledger'
+  p.syntax 'ballista [options] CONFIG_FILE'
+
+  p.option :output, '-o FILE', '--output FILE', 'Output file for ledger'
+
+  p.action do |_, options|
+    config_file = ARGV.shift
+    puts p unless config_file
+    config = parse_config(config_file)
+    ledger = Ballista.new(config)
+    if options[:output]
+      File.open(options[:output], 'w') { |fh| fh << ledger.to_s }
+    else
+      puts ledger
+    end
+  end
+end

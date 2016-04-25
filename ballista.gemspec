@@ -1,6 +1,9 @@
+$:.unshift File.expand_path('../lib/', __FILE__)
+require 'ballista/version'
+
 Gem::Specification.new do |s|
   s.name        = 'ballista'
-  s.version     = '0.0.1'
+  s.version     = Ballista::VERSION
   s.date        = Time.now.strftime('%Y-%m-%d')
 
   s.summary     = 'Projection tool for Ledger format'
@@ -13,6 +16,8 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files`.split
   s.test_files  = `git ls-files spec/*`.split
   s.executables = ['ballista']
+
+  s.add_dependency 'mercenary', '~> 0.3.4'
 
   s.add_development_dependency 'rubocop', '~> 0.35.0'
   s.add_development_dependency 'rake', '~> 10.4.0'
