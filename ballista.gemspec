@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.executables = ['ballista']
 
   s.add_dependency 'mercenary', '~> 0.3.4'
+  s.add_dependency 'cymbal', '~> 1.0.0'
 
   s.add_development_dependency 'rubocop', '~> 0.35.0'
   s.add_development_dependency 'rake', '~> 10.4.0'

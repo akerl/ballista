@@ -3,9 +3,10 @@
 require 'ballista'
 require 'yaml'
 require 'mercenary'
+require 'cymbal'
 
 def parse_config(file)
-  YAML.load(File.read(file))
+  Cymbal.symbolize(YAML.load(File.read(file)))
 end
 
 Mercenary.program(:ballista) do |p|
@@ -21,11 +22,11 @@ Mercenary.program(:ballista) do |p|
     puts p unless config_file
     config = parse_config(config_file)
     months = options[:months] || 12
-    ledger = Ballista.new(entries: config, months: months)
+    projection = Ballista.new(entries: config).project(months)
     if options[:output]
-      File.open(options[:output], 'w') { |fh| fh << ledger.to_s }
+      File.open(options[:output], 'w') { |fh| fh << projection.to_s }
     else
-      puts ledger
+      puts projection
     end
   end
 end
