@@ -37,42 +37,11 @@ To make a new Projection object, use `Ballista.new(entries: my_config)`. my_conf
   actions:
     Expenses:Bills:rent: $2800.00
     Assets:Checking:simple: null
-- name: Electric Bill
-  when: 4
-  actions:
-    Expenses:Bills:electric: $40.00
-    Assets:Checking:simple: null
-- name: Comcast Bill
-  when: 10
-  actions:
-    Expenses:Bills:internet: $82.95
-    Assets:Checking:simple: null
-- name: Github Bill
-  when: 14
-  actions:
-    Expenses:Bills:github: $7.00
-    Assets:Checking:simple: null
-- name: Spotify
-  when: 10
-  actions:
-    Expenses:Bills:spotify: $9.99
-    Assets:Checking:simple: null
-- name: Geico
-  when: 5
-  actions:
-    Expenses:Insurance:auto: $65.73
-    Assets:Checking:simple: null
-- name: T-Mobile
-  when: 2
-  actions:
-    Expenses:Bills:phone: $30.50
-    Assets:Checking:simple: null
-- name: Netflix
-  when: 29
-  actions:
-    Expenses:Bills:netflix: $11.99
-    Assets:Checking:simple: null
 ```
+
+To do a projection, call `.project(start_dt, end_dt)` on your created object. The dates should be Ruby Date objects.
+
+The returned object will be a Ledger journal, courtesy of [libledger](https://github.com/akerl/libledger). As such, you can inspect the .entries as well as use .to_s or puts to print it in ledger text file format.
 
 ## Installation
 
