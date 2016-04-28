@@ -12,6 +12,68 @@ Helper for projecting based on [Ledger](http://www.ledger-cli.org/) format.
 
 ## Usage
 
+To make a new Projection object, use `Ballista.new(entries: my_config)`. my_config should be a hash of projection entries, like this:
+
+```
+- name: Pay Check
+  when:
+  - 15
+  - 30
+  actions:
+    Expenses:Taxes:federal_income: $729.26
+    Expenses:Taxes:va_income: $215.14
+    Expenses:Taxes:social_security: $299.46
+    Expenses:Taxes:medicare: $70.04
+    Assets:Checking:simple: $2739.10
+    Assets:401K:Trad:work: $772.00
+    Income:Salary:work: $-4825.00
+- name: Automatic transfer to Savings
+  when: 2
+  actions:
+    Assets:Savings:ally: $1000.00
+    Assets:Checking:simple: null
+- name: Rent
+  when: 2
+  actions:
+    Expenses:Bills:rent: $2800.00
+    Assets:Checking:simple: null
+- name: Electric Bill
+  when: 4
+  actions:
+    Expenses:Bills:electric: $40.00
+    Assets:Checking:simple: null
+- name: Comcast Bill
+  when: 10
+  actions:
+    Expenses:Bills:internet: $82.95
+    Assets:Checking:simple: null
+- name: Github Bill
+  when: 14
+  actions:
+    Expenses:Bills:github: $7.00
+    Assets:Checking:simple: null
+- name: Spotify
+  when: 10
+  actions:
+    Expenses:Bills:spotify: $9.99
+    Assets:Checking:simple: null
+- name: Geico
+  when: 5
+  actions:
+    Expenses:Insurance:auto: $65.73
+    Assets:Checking:simple: null
+- name: T-Mobile
+  when: 2
+  actions:
+    Expenses:Bills:phone: $30.50
+    Assets:Checking:simple: null
+- name: Netflix
+  when: 29
+  actions:
+    Expenses:Bills:netflix: $11.99
+    Assets:Checking:simple: null
+```
+
 ## Installation
 
     gem install ballista
