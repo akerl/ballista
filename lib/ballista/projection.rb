@@ -39,7 +39,7 @@ module Ballista
         calendar[fake_day].map do |entry|
           next if out_of_bounds?(entry, date)
           build_entry(entry, date)
-        end
+        end.compact
       end
     end
 
