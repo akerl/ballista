@@ -7,7 +7,7 @@ require 'cymbal'
 require 'date'
 
 def parse_config(file)
-  Cymbal.symbolize(YAML.load(File.read(file)))
+  Cymbal.symbolize(YAML.safe_load(File.read(file)))
 end
 
 def count_months(months)
