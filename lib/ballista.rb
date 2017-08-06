@@ -13,3 +13,4 @@ end
 
 require 'ballista/version'
 require 'ballista/projection'
+require 'ballista/frequencies'
