@@ -2,6 +2,8 @@ require 'date'
 
 module Ballista
   module Frequencies
+    ##
+    # Base class for frequency subclasses
     class Base
       def initialize(action, start, stop)
         @name = action[:name]

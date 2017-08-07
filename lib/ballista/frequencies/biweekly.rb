@@ -1,5 +1,7 @@
 module Ballista
   module Frequencies
+    ##
+    # Biweekly actions
     class Biweekly < Weekly
       def step
         14

@@ -1,5 +1,7 @@
 module Ballista
   module Frequencies
+    ##
+    # Monthly actions
     class Monthly < Base
       def initialize(*_)
         super

@@ -1,10 +1,12 @@
 module Ballista
   module Frequencies
+    ##
+    # Weekly actions
     class Weekly < Base
       def log
         pointer = Date.parse(@when)
         get_dates([], pointer)
-        end
+      end
 
       def get_dates(log, pointer)
         return log if pointer > @stop
