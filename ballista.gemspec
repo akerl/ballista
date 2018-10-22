@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files  = `git ls-files spec/*`.split
   s.executables = ['ballista']
 
-  s.add_dependency 'cymbal', '~> 1.0.0'
+  s.add_dependency 'cymbal', '~> 2.0.0'
   s.add_dependency 'libledger', '~> 0.0.1'
   s.add_dependency 'mercenary', '~> 0.3.4'
 
