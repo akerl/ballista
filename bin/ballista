@@ -24,9 +24,7 @@ def parse_start_end(start_dt, end_dt)
 end
 
 def parse_range(months, start_dt, end_dt)
-  if months && (start_dt || end_dt)
-    raise('Cannot specify months *and* start/end')
-  end
+  raise('Cannot specify months *and* start/end') if months && (start_dt || end_dt)
   count_months(months) || parse_start_end(start_dt, end_dt) || count_months(12)
 end
 

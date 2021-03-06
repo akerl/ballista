@@ -27,7 +27,7 @@ module Ballista
     def out_of_bounds?(entry, date)
       if entry[:starts] && Date.parse(entry[:starts]) > date
         true
-      elsif entry[:ends] && Date.parse(entry[:ends]) < date
+      elsif entry[:ends] && Date.parse(entry[:ends]) < date # rubocop:disable Lint/DuplicateBranch
         true
       else
         false
