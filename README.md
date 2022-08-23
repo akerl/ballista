@@ -2,9 +2,7 @@ ballista
 =========
 
 [![Gem Version](https://img.shields.io/gem/v/ballista.svg)](https://rubygems.org/gems/ballista)
-[![Build Status](https://img.shields.io/travis/com/akerl/ballista.svg)](https://travis-ci.com/akerl/ballista)
-[![Coverage Status](https://img.shields.io/codecov/c/github/akerl/ballista.svg)](https://codecov.io/github/akerl/ballista)
-[![Code Quality](https://img.shields.io/codacy/c9caebd934f04ca699d1f02fac6dcf22.svg)](https://www.codacy.com/app/akerl/ballista)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/akerl/ballista/Build)](https://github.com/akerl/ballista/actions)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
 Helper for projecting based on [Ledger](http://www.ledger-cli.org/) format.
