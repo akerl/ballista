@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'libledger', '~> 0.0.8'
   s.add_dependency 'mercenary', '~> 0.4.0'
 
-  s.add_development_dependency 'codecov', '~> 0.5.1'
   s.add_development_dependency 'goodcop', '~> 0.9.3'
   s.add_development_dependency 'rake', '~> 13.0.3'
   s.add_development_dependency 'rspec', '~> 3.10.0'
